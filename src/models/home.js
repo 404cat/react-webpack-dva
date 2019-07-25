@@ -27,17 +27,19 @@ export default {
             type: 'query',
             payload: location.pathname
           });
-        } else if (location.pathname === '/list') {
-          dispatch({
-            type: 'getList',
-            payload: location.pathname
-          });
         }
+        // else if (location.pathname === '/list') {
+        //   dispatch({
+        //     type: 'getList',
+        //     payload: location.pathname
+        //   });
+        // }
       });
     }
   },
   effects: {
     *query({ payload }, { call, put }) {
+      console.log('进入进场');
       message.success('欢迎进入主页...');
       yield put({
         type: 'change',

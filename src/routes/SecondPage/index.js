@@ -4,8 +4,8 @@ import { routerRedux } from 'dva/router';
 import ListCom from 'components/list';
 import hoc from 'components/common/LoadingHoc';
 
-const SecondPage = ({dispatch, location, home}) => {
-  const { listData } = home;
+const SecondPage = ({dispatch, location, listmodel}) => {
+  const { listData } = listmodel;
   const listProps = {
     listData,
     onRefresh() {
@@ -21,9 +21,9 @@ const SecondPage = ({dispatch, location, home}) => {
     <div>
       <h2>SecondPage</h2>
       <h4>path: {location.pathname}</h4>
-      <h4>state: {home.msg}</h4>
+      {/* <h4>state: {home.msg}</h4> */}
       <ListCom {...listProps} />
     </div>
   );
 };
-export default connect(({home}) => ({home, loading: home.loading}))(hoc(SecondPage));
+export default connect(({listmodel}) => ({listmodel, loading: listmodel.loading}))(hoc(SecondPage));
